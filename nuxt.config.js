@@ -1,4 +1,5 @@
 export default {
+  target: 'server',
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     title: 'weather-forecast-app',
@@ -9,6 +10,15 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
+
+  srcDir: 'src/client/',
+
+  serverMiddleware: [
+    {
+      path: '/api',
+      handler: '~/../server/app.js',
+    },
+  ],
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [],
@@ -36,7 +46,9 @@ export default {
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
-  axios: {},
+  axios: {
+    prefix: '/api',
+  },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {},
